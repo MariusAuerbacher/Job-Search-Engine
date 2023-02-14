@@ -3,6 +3,7 @@ import { Container, Row, Col } from 'react-bootstrap'
 import Job from './Job'
 import { useParams } from 'react-router-dom'
 
+
 const CompanySearchResults = () => {
   const [jobs, setJobs] = useState([])
   const params = useParams()
@@ -22,6 +23,7 @@ const CompanySearchResults = () => {
         setJobs(data)
       } else {
         alert('Error fetching results')
+  
       }
     } catch (error) {
       console.log(error)

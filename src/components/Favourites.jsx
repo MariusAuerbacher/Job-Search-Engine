@@ -5,24 +5,26 @@ import {
   ListGroup,
   ListGroupItem,
   Button,
-} from 'react-bootstrap'
-import { StarFill } from 'react-bootstrap-icons'
-import { useSelector, useDispatch } from 'react-redux'
-import { Link, useNavigate } from 'react-router-dom'
-import { removeFromFavourite } from '../redux/actions/actionCreators';
+} from "react-bootstrap";
+import { StarFill } from "react-bootstrap-icons";
+import { useSelector, useDispatch } from "react-redux";
+import { Link, useNavigate } from "react-router-dom";
+import { removeFromFavourite } from "../redux/actions";
 
 const Favourites = () => {
-  const favourites = useSelector((state) => state.favouriteReducer.favourite.list)
-  const dispatch = useDispatch()
+  const favourites = useSelector(
+    (state) => state.favouriteReducer.favourite.list
+  );
+  const dispatch = useDispatch();
 
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   return (
     <Container>
       <Row>
         <Col xs={10} className="mx-auto my-3">
           <h1>Favourites</h1>
-          <Button onClick={() => navigate('/')}>Home</Button>
+          <Button onClick={() => navigate("/")}>Home</Button>
         </Col>
         <Col xs={10} className="mx-auto my-3">
           <ListGroup>
@@ -30,18 +32,16 @@ const Favourites = () => {
               <ListGroupItem key={i}>
                 <StarFill
                   className="mr-2"
-                  onClick={() =>
-                    dispatch(removeFromFavourite(fav))
-                  }
+                  onClick={() => dispatch(removeFromFavourite(fav))}
                 />
-                <Link to={'/' + fav}>{fav}</Link>
+                <Link to={"/" + fav}>{fav}</Link>
               </ListGroupItem>
             ))}
           </ListGroup>
         </Col>
       </Row>
     </Container>
-  )
-}
+  );
+};
 
-export default Favourites
+export default Favourites;

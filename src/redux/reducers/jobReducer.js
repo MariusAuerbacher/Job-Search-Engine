@@ -1,22 +1,34 @@
-import { STORE_JOBS } from "../actions/actionTypes";
+import { STORE_JOBS, TOGGLE_ERROR, TOGGLE_LOADING } from "../actions";
 
 const initialState = {
-  jobs: []
-}
-
+  jobs: [],
+  isLoading: false,
+  isError: false
+};
 
 const jobReducer = (state = initialState, action) => {
-  switch (action.type){
-
+  switch (action.type) {
     case STORE_JOBS:
-    return {
-      jobs: action.payload
-    }
+      return {
+        ...state,
+        jobs: action.payload,
+      };
+
+    case TOGGLE_LOADING:
+      return {
+        ...state,
+        isLoading: action.payload,
+      };
+
+    case TOGGLE_ERROR:
+      return {
+        ...state,
+        isError: action.payload,
+      };
+
     default:
-    return state
+      return state;
   }
+};
 
-}
-
-
-export default jobReducer
+export default jobReducer;
